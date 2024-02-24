@@ -1,12 +1,29 @@
-import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEyeSlash,
+  faEye,
+  faCircleExclamation,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext, AuthContextType } from "../context/authContext";
 
 const SignIn = () => {
+  const { logIn } = useContext(AuthContext) as AuthContextType;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleLogIn = async () => {
+    if (email === "" || password === "") {
+      setError("Fill email and password fields");
+      return;
+    }
+    await logIn(email, password);
+    setError("");
+  };
+
   return (
     <div className="bg-unauth bg-cover bg-center bg-no-repeat h-screen  bg-red-300 flex justify-center items-center">
       <div className="min-w-96 shadow-lg w-1/3 p-11 bg-white flex flex-col justify-center items-center">
@@ -24,7 +41,8 @@ const SignIn = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mb-3.5 w-full border border-solid border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4"
+            className={`mb-3.5 w-full border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4
+            ${error && "border-red-500 bg-red-100"}`}
           />
           <label
             htmlFor="password"
@@ -32,29 +50,39 @@ const SignIn = () => {
           >
             Password:
           </label>
-          <div className="relative mb-2.5 w-full">
+          <div className="relative mb-2 w-full">
             <input
               required
               type={showPassword ? "text" : "password"}
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-solid border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4"
+              className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4
+              ${error && "border-red-500 bg-red-100"}`}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 px-2 py-1"
+              className="absolute inset-y-0 right-1 px-2 py-1"
             >
               <FontAwesomeIcon
-                color="#F4A448"
+                color={error ? "#EF4444" : "#F4A448"}
                 icon={!showPassword ? faEyeSlash : faEye}
               />
             </button>
           </div>
+          {error && (
+            <p className="text-red-500 text-sm mb-1">
+              <FontAwesomeIcon icon={faCircleExclamation} className="mr-1" />
+              {error}
+            </p>
+          )}
           <a className="text-custom-main">Forgot Your Password?</a>
         </form>
-        <button className="rounded text-2xl my-6 bg-custom-main w-72 py-2.5 text-white">
+        <button
+          onClick={handleLogIn}
+          className="rounded text-2xl my-6 bg-custom-main w-full py-2.5 text-white hover:bg-[#194A6C] transition-all"
+        >
           Log In
         </button>
         <p>
