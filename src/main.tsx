@@ -6,6 +6,9 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
+import SignUp from "./routes/sign-up";
+import AuthProvider from "./context/authContext";
+import SignIn from "./routes/sign-in";
 
 const router = createBrowserRouter([
   {
@@ -14,16 +17,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/sign-in",
-    element: <div>This is the sign-in page</div>,
+    element: <SignIn />,
   },
   {
     path: "/sign-up",
-    element: <div>This is the sign-up page</div>,
+    element: <SignUp />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
