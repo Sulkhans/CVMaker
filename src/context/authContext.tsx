@@ -17,7 +17,7 @@ type User = {
 
 export type AuthContextType = {
   user: User | null;
-  //   login: (username: string, password: string) => Promise<void>;
+  logIn: (username: string, password: string) => Promise<void>;
   //   logout: () => Promise<void>;
   signUp: (email: string, password: string) => Promise<void>;
   loading: boolean;
@@ -34,16 +34,13 @@ const AuthProvider = ({ children }: Props) => {
   const signUp = async (email: string, password: string) => {
     try {
       setLoading(true);
-      const response = await fetch(
-        `https://d86b-188-169-35-136.ngrok-free.app/registration`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+      const response = await fetch(`http://188.169.35.136:8080/registration`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
       if (response.status === 200) {
         const data = await response.json();
@@ -63,9 +60,38 @@ const AuthProvider = ({ children }: Props) => {
     }
   };
 
+  const logIn = async (email: string, password: string) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`http://188.169.35.136:8080/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        console.log(data);
+        setLoading(false);
+      } else if (response.status === 401) {
+        const errorData = await response.json();
+        console.error(`Login failed: ${errorData.message}`);
+        setLoading(false);
+      } else {
+        console.error(`Unexpected status code: ${response.status}`);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("An error occurred during login:", error);
+      setLoading(false);
+    }
+  };
+
   const contextValue: AuthContextType = {
     user,
-    // login,
+    logIn,
     // logout,
     signUp,
     loading,
