@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, AuthContextType } from "../context/authContext";
 
 const SignIn = () => {
@@ -15,12 +15,15 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
+  const navigate = useNavigate();
+
   const handleLogIn = async () => {
     if (email === "" || password === "") {
       setError("Fill email and password fields");
       return;
     }
     await logIn(email, password);
+    navigate("/home");
     setError("");
   };
 

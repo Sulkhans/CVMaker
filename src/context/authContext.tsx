@@ -5,20 +5,15 @@ import {
   //   useEffect,
   ReactNode,
 } from "react";
+import { useCookies } from "react-cookie";
 
 type Props = {
   children: ReactNode;
 };
-type User = {
-  id: number;
-  username: string;
-  email: string;
-};
 
 export type AuthContextType = {
-  user: User | null;
   logIn: (username: string, password: string) => Promise<void>;
-  //   logout: () => Promise<void>;
+  logout: () => void;
   signUp: (email: string, password: string) => Promise<void>;
   loading: boolean;
 };
@@ -28,8 +23,8 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 );
 
 const AuthProvider = ({ children }: Props) => {
-  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [, setCookie, removeCookie] = useCookies(["authToken"]);
 
   const signUp = async (email: string, password: string) => {
     try {
@@ -74,6 +69,7 @@ const AuthProvider = ({ children }: Props) => {
       if (response.status === 200) {
         const data = await response.json();
         console.log(data);
+        setCookie("authToken", data.token, { path: "/" });
         setLoading(false);
       } else if (response.status === 401) {
         const errorData = await response.json();
@@ -89,10 +85,11 @@ const AuthProvider = ({ children }: Props) => {
     }
   };
 
+  const logout = () => removeCookie("authToken");
+
   const contextValue: AuthContextType = {
-    user,
     logIn,
-    // logout,
+    logout,
     signUp,
     loading,
   };
