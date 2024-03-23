@@ -9,8 +9,8 @@ export const UnauthLayout = ({ children }: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
-      <nav className="relative md:px-10 bg-navigation bg-cover bg-center bg-no-repeat">
-        <div className="flex w-full flex-wrap items-center justify-between md:justify-end mx-auto py-5 gap-6">
+      <nav className="h-24 flex items-center relative md:px-10 px-2 bg-navigation bg-cover bg-center bg-no-repeat">
+        <div className="flex w-full flex-wrap items-center justify-between md:justify-end mx-auto gap-6">
           <div className="md:px-0 px-2 relative flex w-full md:w-auto justify-between md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -44,7 +44,7 @@ export const UnauthLayout = ({ children }: Props) => {
             </button>
           </div>
           <div
-            className={`md:none bg-custom-blue overflow-hidden h-[calc(100vh-81px)] md:h-auto absolute md:relative top-full flex items-start justify-left md:justify-between w-full md:flex md:w-auto md:order-1 transition duration-200 ease-in-out ${
+            className={`md:hidden bg-custom-blue overflow-hidden h-[calc(100vh-96px)] absolute top-full flex items-start justify-left w-full transition duration-200 ease-in-out ${
               isMenuOpen ? "translate-x-0" : "-translate-x-full md:hidden"
             }`}
           >
@@ -76,7 +76,16 @@ export const UnauthLayout = ({ children }: Props) => {
         </div>
       </nav>
       {children}
-      <footer></footer>
+      <footer className="md:px-10 h-36 bg-footer bg-cover bg-center bg-no-repeat flex justify-center items-center">
+        <div className="flex-col md:flex-row w-full flex justify-start gap-6 items-center">
+          <button className="text-white text-base border border-custom-orange bg-custom-orange hover:bg-custom-dark-orange focus:outline-none font-medium px-5 md:px-10 py-2 text-center">
+            About Us
+          </button>
+          <div className="flex justify-center py-2 px-5 text-white text-center border-2 border-custom-orange">
+            <p>Contact us: examplemail</p>
+          </div>
+        </div>
+      </footer>
     </>
   );
 };

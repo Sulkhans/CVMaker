@@ -6,6 +6,7 @@ export default {
       backgroundImage: {
         unauth: "url(assets/bg.png)",
         navigation: "url(assets/nav.png)",
+        footer: "url(assets/footer.png)"
       },
       boxShadow: {
         lg: "-10px -10px 20px 0px rgba(0, 0, 0, 0.25)",
