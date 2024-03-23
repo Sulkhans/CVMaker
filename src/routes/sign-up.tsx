@@ -51,14 +51,14 @@ const SignUp = () => {
     await signUp(email, password);
   };
   return (
-    <div className="bg-unauth bg-cover bg-center bg-no-repeat h-screen  bg-red-300 flex justify-center items-center">
-      <div className="min-w-96 shadow-lg w-1/3 p-11 bg-white flex flex-col justify-center items-center">
-        <h2 className="text-2xl mb-4">Create An Account</h2>
+    <div className="bg-unauth bg-cover bg-center bg-no-repeat h-screen bg-red-300 flex justify-center items-center">
+      <div className="w-full max-w-96 shadow-lg p-6 m-4 sm:p-8 bg-white flex flex-col justify-center items-center">
+        <h2 className="text-xl sm:text-2xl mb-4">Create An Account</h2>
         <form className="w-full flex flex-col gap-2.5">
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
               Email Address:
             </label>
@@ -68,11 +68,11 @@ const SignUp = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4
+              className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground p-2
               ${emailError && "border-red-500 bg-red-100"}`}
             />
             {emailError && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-500 text-sm mt-2">
                 <FontAwesomeIcon icon={faCircleExclamation} className="mr-1" />
                 {emailError}
               </p>
@@ -81,7 +81,7 @@ const SignUp = () => {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
               Password:
             </label>
@@ -92,7 +92,7 @@ const SignUp = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4 
+                className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground p-2 
                 ${passwordError && "border-red-500 bg-red-100"}`}
               />
               <button
@@ -107,7 +107,7 @@ const SignUp = () => {
               </button>
             </div>
             {passwordError && (
-              <p className="text-red-500 text-sm leading-4 mt-1">
+              <p className="text-red-500 text-sm leading-4 mt-2">
                 <FontAwesomeIcon icon={faCircleExclamation} className="mr-1" />
                 {passwordError}
               </p>
@@ -116,7 +116,7 @@ const SignUp = () => {
           <div>
             <label
               htmlFor="confirmPassword"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
               Confirm Password:
             </label>
@@ -127,7 +127,7 @@ const SignUp = () => {
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4
+                className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground p-2
                 ${confirmPasswordError && "border-red-500 bg-red-100"}`}
               />
               <button
@@ -142,7 +142,7 @@ const SignUp = () => {
               </button>
             </div>
             {confirmPasswordError && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-500 text-sm mt-2">
                 <FontAwesomeIcon icon={faCircleExclamation} className="mr-1" />
                 {confirmPasswordError}
               </p>
@@ -151,11 +151,11 @@ const SignUp = () => {
         </form>
         <button
           onClick={handleSignUp}
-          className="rounded text-2xl my-6 bg-custom-main w-72 py-2.5 text-white hover:bg-[#194A6C] transition-all"
+          className="rounded text-xl mb-4 mt-6 bg-custom-main w-full py-2.5 text-white hover:bg-[#194A6C] transition-all"
         >
           Sign Up
         </button>
-        <p>
+        <p className="text-sm">
           Already Have An Account?{" "}
           <Link to="/sign-in" className="text-custom-main">
             Log In
