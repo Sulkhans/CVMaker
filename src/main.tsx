@@ -11,6 +11,7 @@ import AuthProvider from "./context/authContext";
 import SignIn from "./routes/sign-in";
 import ProtectedRoute from "./routes/protected";
 import Home from "./routes/home";
+import Test from "./routes/test";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
+  {
+    path: "/test",
+    element: <Test />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
