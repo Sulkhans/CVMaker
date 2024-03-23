@@ -22,7 +22,7 @@ const SignIn = () => {
       setError("Fill email and password fields");
       return;
     }
-    await logIn(email, password);
+    await logIn(email, password, "");
     navigate("/home");
     setError("");
   };

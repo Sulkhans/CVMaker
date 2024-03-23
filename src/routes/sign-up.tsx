@@ -48,7 +48,7 @@ const SignUp = () => {
       return;
     }
 
-    await signUp(email, password);
+    await signUp(email, password, "");
   };
   return (
     <div className="bg-unauth bg-cover bg-center bg-no-repeat h-screen bg-red-300 flex justify-center items-center">
