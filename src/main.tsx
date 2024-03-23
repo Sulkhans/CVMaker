@@ -12,6 +12,7 @@ import SignIn from "./routes/sign-in";
 import ProtectedRoute from "./routes/protected";
 import Home from "./routes/home";
 import Landing from "./routes/landing";
+import Test from "./routes/test";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
     path: "/landing",
     element: <Landing />,
   },
+  {
+    path: "/test",
+    element: <Test />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -12,9 +12,9 @@ type Props = {
 };
 
 export type AuthContextType = {
-  logIn: (username: string, password: string) => Promise<void>;
+  logIn: (username: string, password: string, apiBaseUrl: string) => Promise<void>;
   logout: () => void;
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string, apiBaseUrl: string) => Promise<void>;
   loading: boolean;
 };
 
@@ -26,10 +26,10 @@ const AuthProvider = ({ children }: Props) => {
   const [loading, setLoading] = useState(true);
   const [, setCookie, removeCookie] = useCookies(["authToken"]);
 
-  const signUp = async (email: string, password: string) => {
+  const signUp = async (email: string, password: string, apiBaseUrl: string) => {
     try {
       setLoading(true);
-      const response = await fetch(`http://188.169.35.136:8080/registration`, {
+      const response = await fetch(`${apiBaseUrl}/registration`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,10 +55,10 @@ const AuthProvider = ({ children }: Props) => {
     }
   };
 
-  const logIn = async (email: string, password: string) => {
+  const logIn = async (email: string, password: string, apiBaseUrl: string) => {
     try {
       setLoading(true);
-      const response = await fetch(`http://188.169.35.136:8080/login`, {
+      const response = await fetch(`${apiBaseUrl}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
