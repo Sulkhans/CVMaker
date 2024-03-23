@@ -9,13 +9,13 @@ export const UnauthLayout = ({ children }: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
-      <nav className="h-24 flex items-center relative md:px-10 px-2 bg-navigation bg-cover bg-center bg-no-repeat">
+      <nav className="h-24 flex items-center md:px-10 bg-navigation bg-cover bg-center bg-no-repeat fixed top-0 left-0 right-0 z-20">
         <div className="flex w-full flex-wrap items-center justify-between md:justify-end mx-auto gap-6">
-          <div className="md:px-0 px-2 relative flex w-full md:w-auto justify-between md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <div className="md:px-0 pr-2 relative flex w-full md:w-auto justify-between md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               type="button"
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden"
+              className=" inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden"
               aria-controls="navbar-cta"
               aria-expanded={isMenuOpen ? "true" : "false"}
             >
@@ -37,14 +37,13 @@ export const UnauthLayout = ({ children }: Props) => {
               </svg>
             </button>
             <button
-              type="button"
               className="text-white text-base border border-custom-orange bg-custom-orange hover:bg-custom-dark-orange focus:outline-none font-medium px-5 md:px-10 py-2 text-center"
             >
               Log In
             </button>
           </div>
           <div
-            className={`md:hidden bg-custom-blue overflow-hidden h-[calc(100vh-96px)] absolute top-full flex items-start justify-left w-full transition duration-200 ease-in-out ${
+            className={`md:hidden w-80 bg-custom-blue overflow-hidden h-[calc(100vh-96px)] absolute top-full flex items-start justify-left transition duration-200 ease-in-out ${
               isMenuOpen ? "translate-x-0" : "-translate-x-full md:hidden"
             }`}
           >
@@ -75,7 +74,7 @@ export const UnauthLayout = ({ children }: Props) => {
           </div>
         </div>
       </nav>
-      {children}
+      <div className="mt-24 overflow-y-auto">{children}</div>
       <footer className="md:px-10 h-36 bg-footer bg-cover bg-center bg-no-repeat flex justify-center items-center">
         <div className="flex-col md:flex-row w-full flex justify-start gap-6 items-center">
           <button className="text-white text-base border border-custom-orange bg-custom-orange hover:bg-custom-dark-orange focus:outline-none font-medium px-5 md:px-10 py-2 text-center">
