@@ -68,7 +68,7 @@ const SignUp = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground p-2
+              className={`w-full border-2 border-custom-orange bg-custom-light-orange p-2
               ${emailError && "border-red-500 bg-red-100"}`}
             />
             {emailError && (
@@ -92,7 +92,7 @@ const SignUp = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground p-2 
+                className={`w-full border-2 border-custom-orange bg-custom-light-orange p-2 
                 ${passwordError && "border-red-500 bg-red-100"}`}
               />
               <button
@@ -127,7 +127,7 @@ const SignUp = () => {
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground p-2
+                className={`w-full border-2 border-custom-orange bg-custom-light-orange p-2
                 ${confirmPasswordError && "border-red-500 bg-red-100"}`}
               />
               <button
@@ -151,13 +151,13 @@ const SignUp = () => {
         </form>
         <button
           onClick={handleSignUp}
-          className="rounded text-xl mb-4 mt-6 bg-custom-main w-full py-2.5 text-white hover:bg-[#194A6C] transition-all"
+          className="rounded text-xl mb-4 mt-6 bg-custom-blue w-full py-2.5 text-white hover:bg-custom-light-blue transition-all"
         >
           Sign Up
         </button>
         <p className="text-sm">
           Already Have An Account?{" "}
-          <Link to="/sign-in" className="text-custom-main">
+          <Link to="/sign-in" className="text-custom-blue">
             Log In
           </Link>
         </p>

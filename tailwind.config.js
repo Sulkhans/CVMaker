@@ -11,9 +11,10 @@ export default {
       },
       colors: {
         custom: {
-          inputBorder: "#F4A448",
-          inputBackground: "#FFF2E2",
-          main: "#143C57",
+          orange: "#F4A448",
+          blue: "#143C57",
+          "light-orange": "#FFF2E2",
+          "light-blue": "#194A6C",
         },
       },
     },

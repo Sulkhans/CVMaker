@@ -44,7 +44,7 @@ const SignIn = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`mb-3.5 w-full border-2 border-custom-inputBorder bg-custom-inputBackground p-2
+            className={`mb-3.5 w-full border-2 border-custom-orange bg-custom-light-orange p-2
             ${error && "border-red-500 bg-red-100"}`}
           />
           <label
@@ -60,7 +60,7 @@ const SignIn = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4
+              className={`w-full border-2 border-custom-orange bg-custom-light-orange py-2 px-4
               ${error && "border-red-500 bg-red-100"}`}
             />
             <button
@@ -80,19 +80,19 @@ const SignIn = () => {
               {error}
             </p>
           )}
-          <a className="text-custom-main text-sm font-medium cursor-pointer">
+          <a className="text-custom-blue text-sm font-medium cursor-pointer">
             Forgot Your Password?
           </a>
         </form>
         <button
           onClick={handleLogIn}
-          className="rounded text-xl my-4 bg-custom-main w-full py-2.5 text-white hover:bg-[#194A6C] transition-all"
+          className="rounded text-xl my-4 bg-custom-blue w-full py-2.5 text-white hover:bg-custom-light-blue transition-all"
         >
           Log In
         </button>
         <p className="text-sm">
           Don't Have An Account?{" "}
-          <Link to="/sign-up" className="text-custom-main">
+          <Link to="/sign-up" className="text-custom-blue">
             Sign Up
           </Link>
         </p>
