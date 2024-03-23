@@ -11,6 +11,7 @@ import AuthProvider from "./context/authContext";
 import SignIn from "./routes/sign-in";
 import ProtectedRoute from "./routes/protected";
 import Home from "./routes/home";
+import Landing from "./routes/landing";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         <Home />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "/landing",
+    element: <Landing />,
   },
 ]);
 
