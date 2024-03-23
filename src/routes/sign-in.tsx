@@ -28,13 +28,13 @@ const SignIn = () => {
   };
 
   return (
-    <div className="bg-unauth bg-cover bg-center bg-no-repeat h-screen  bg-red-300 flex justify-center items-center">
-      <div className="min-w-96 shadow-lg w-1/3 p-11 bg-white flex flex-col justify-center items-center">
-        <h2 className="text-2xl mb-4">Log In To Your Account</h2>
+    <div className="bg-unauth bg-cover bg-center bg-no-repeat h-screen bg-red-300 flex justify-center items-center">
+      <div className="w-full max-w-96 shadow-lg p-6 m-4 sm:p-8 bg-white flex flex-col justify-center items-center">
+        <h2 className="text-xl sm:text-2xl mb-4">Log In To Your Account</h2>
         <form className="w-full">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 mb-0.5"
           >
             Email Address:
           </label>
@@ -44,12 +44,12 @@ const SignIn = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`mb-3.5 w-full border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4
+            className={`mb-3.5 w-full border-2 border-custom-orange bg-custom-light-orange p-2
             ${error && "border-red-500 bg-red-100"}`}
           />
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 mb-0.5"
           >
             Password:
           </label>
@@ -60,7 +60,7 @@ const SignIn = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`w-full border-2 border-custom-inputBorder bg-custom-inputBackground py-2 px-4
+              className={`w-full border-2 border-custom-orange bg-custom-light-orange py-2 px-4
               ${error && "border-red-500 bg-red-100"}`}
             />
             <button
@@ -75,22 +75,24 @@ const SignIn = () => {
             </button>
           </div>
           {error && (
-            <p className="text-red-500 text-sm mb-1">
+            <p className="text-red-500 text-sm mb-2">
               <FontAwesomeIcon icon={faCircleExclamation} className="mr-1" />
               {error}
             </p>
           )}
-          <a className="text-custom-main">Forgot Your Password?</a>
+          <a className="text-custom-blue text-sm font-medium cursor-pointer">
+            Forgot Your Password?
+          </a>
         </form>
         <button
           onClick={handleLogIn}
-          className="rounded text-2xl my-6 bg-custom-main w-full py-2.5 text-white hover:bg-[#194A6C] transition-all"
+          className="rounded text-xl my-4 bg-custom-blue w-full py-2.5 text-white hover:bg-custom-light-blue transition-all"
         >
           Log In
         </button>
-        <p>
+        <p className="text-sm">
           Don't Have An Account?{" "}
-          <Link to="/sign-up" className="text-custom-main">
+          <Link to="/sign-up" className="text-custom-blue">
             Sign Up
           </Link>
         </p>
